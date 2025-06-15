@@ -108,7 +108,7 @@ export const getUserInfo = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await userModel.find({}, "_id username email role createdAt");
+    const users = await userModel.find();
 
     res.status(200).json(users);
   } catch (error) {
