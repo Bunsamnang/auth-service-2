@@ -105,3 +105,14 @@ export const getUserInfo = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({}, "_id username email role createdAt");
+
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
